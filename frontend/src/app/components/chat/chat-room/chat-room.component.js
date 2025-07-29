@@ -2,8 +2,16 @@ angular.module('chatApp')
 .component('chatRoom', {
     template: `
         <div class="h-full flex">
+            <!-- Mobile Menu Button -->
+            <button ng-click="$ctrl.sidebarOpen = !$ctrl.sidebarOpen" 
+                    class="lg:hidden fixed top-20 left-4 z-50 w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            
             <!-- Sidebar -->
-            <div class="w-80 sidebar flex flex-col">
+            <div class="w-80 sidebar flex flex-col transition-transform duration-300 lg:translate-x-0"
+                 ng-class="{'translate-x-0': $ctrl.sidebarOpen, '-translate-x-full': !$ctrl.sidebarOpen}"
+                 class="fixed lg:relative inset-y-0 left-0 z-40 lg:z-auto">
                 <!-- Channels -->
                 <div class="p-6 border-b border-slate-800/50">
                     <div class="flex items-center justify-between mb-4">
@@ -162,6 +170,7 @@ angular.module('chatApp')
         ctrl.onlineUsers = 24;
         ctrl.isTyping = false;
         ctrl.newMessage = '';
+        ctrl.sidebarOpen = false;
         
         ctrl.rooms = [
             { id: 1, name: 'general', unread: 0 },

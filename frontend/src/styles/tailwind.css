@@ -17,6 +17,10 @@
     @apply bg-gradient-to-r from-violet-500/20 to-purple-500/20 text-white border border-violet-500/30;
   }
   
+  .dropdown-item {
+    @apply flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all duration-200 text-sm;
+  }
+  
   .card-modern {
     @apply bg-slate-900/50 backdrop-blur-xl border border-slate-800/50 rounded-2xl shadow-2xl;
   }
