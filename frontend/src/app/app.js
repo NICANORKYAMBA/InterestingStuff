@@ -23,12 +23,15 @@ angular.module('chatApp', ['ngRoute'])
     
     $rootScope.$location = $location;
     
+    // Dynamic copyright year
+    $rootScope.currentYear = new Date().getFullYear();
+    
     // Global loading state
     $rootScope.isLoading = false;
     
     // Global user state
     $rootScope.currentUser = {
         username: 'Demo User',
-        avatar: 'https://ui-avatars.com/api/?name=Demo+User&background=6366f1&color=fff'
+        avatar: 'https://ui-avatars.com/api/?name=Demo+User&background=8b5cf6&color=fff'
     };
 }]);
