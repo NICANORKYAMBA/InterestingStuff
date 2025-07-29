@@ -2,13 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: {
-    app: './src/app/app.js',
-    styles: './src/styles/tailwind.css'
-  },
+  entry: './src/app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     clean: true
   },
   module: {
@@ -41,7 +38,7 @@ module.exports = {
   ],
   devServer: {
     static: './dist',
-    port: 8080,
+    port: 3000,
     hot: true
   }
 };

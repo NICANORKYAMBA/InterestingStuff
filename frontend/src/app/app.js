@@ -14,10 +14,21 @@ angular.module('chatApp', ['ngRoute'])
             redirectTo: '/'
         });
 }])
-.run(['$rootScope', function($rootScope) {
+.run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.apiUrl = {
         chat: 'http://localhost:3001',
         user: 'http://localhost:3002',
         analytics: 'http://localhost:3003'
+    };
+    
+    $rootScope.$location = $location;
+    
+    // Global loading state
+    $rootScope.isLoading = false;
+    
+    // Global user state
+    $rootScope.currentUser = {
+        username: 'Demo User',
+        avatar: 'https://ui-avatars.com/api/?name=Demo+User&background=6366f1&color=fff'
     };
 }]);
