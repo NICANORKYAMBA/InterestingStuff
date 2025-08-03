@@ -43,14 +43,12 @@ echo "  ✅ Professional Login Page"
 echo "  ✅ Mobile-Responsive Design"
 echo ""
 
-# Start HTTP server (you can use any simple server)
-if command -v python3 &> /dev/null; then
-    python3 -m http.server $PORT --directory src
-elif command -v python &> /dev/null; then
-    cd src && python -m SimpleHTTPServer $PORT
-elif command -v npx &> /dev/null; then
-    npx http-server src -p $PORT -c-1
-else
-    echo "⚠️  No HTTP server available. Please install Python or http-server globally:"
-    echo "   npm install -g http-server"
+# Install live-server for hot reload if not available
+if ! command -v live-server &> /dev/null; then
+    echo "📦 Installing live-server for hot reload..."
+    npm install -g live-server
 fi
+
+# Start live-server with hot reload
+echo "🔄 Hot reload enabled - changes will auto-refresh!"
+live-server src --port=$PORT --host=localhost --entry-file=index.html --open=false --quiet=false --ignore=node_modules
