@@ -8,106 +8,118 @@ angular.module('chatApp')
                 <div class="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s"></div>
             </div>
             
-            <div class="relative z-10 flex items-center justify-center min-h-screen p-6">
-                <div class="w-full max-w-md">
-                    <!-- Back to Landing -->
-                    <div class="mb-6">
-                        <a href="#!/" class="inline-flex items-center text-slate-400 hover:text-white transition-colors group">
-                            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>Back to Home
-                        </a>
+            <!-- Back Button -->
+            <div class="absolute top-6 left-6 z-20">
+                <a href="#!/" class="flex items-center justify-center w-12 h-12 bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl text-slate-400 hover:text-white hover:bg-slate-700/50 transition-all duration-300 group">
+                    <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+            
+            <div class="relative z-10 flex items-center justify-center min-h-screen p-4">
+                <div class="w-full max-w-lg">
+                    <!-- Header -->
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-violet-500/50 animate-pulse">
+                            <i class="fas fa-comments text-white text-2xl"></i>
+                        </div>
+                        <h1 class="text-4xl font-bold text-white mb-3">Welcome Back</h1>
+                        <p class="text-slate-400 text-lg">Continue your FlowChat journey</p>
                     </div>
 
-                    <!-- Login Form -->
-                    <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl">
-                        <div class="text-center mb-8">
-                            <div class="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-violet-500/25 animate-float">
-                                <i class="fas fa-sign-in-alt text-white text-xl"></i>
-                            </div>
-                            <h2 class="text-2xl font-bold text-white mb-2">Welcome Back</h2>
-                            <p class="text-slate-400">Sign in to continue to FlowChat</p>
-                        </div>
-                    
-                        <form ng-submit="$ctrl.login()" class="space-y-5">
-                            <div>
-                                <label class="block text-slate-300 text-sm font-medium mb-2">Email or Username</label>
+                    <!-- Modern Login Card -->
+                    <div class="bg-slate-900/90 backdrop-blur-2xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl shadow-black/50 hover:shadow-violet-500/20 transition-all duration-500">
+                        <form ng-submit="$ctrl.login()" class="space-y-4">
+                            <!-- Email/Username -->
+                            <div class="relative">
+                                <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" 
                                        ng-model="$ctrl.credentials.username"
-                                       class="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-200"
-                                       placeholder="Enter your email or username"
+                                       class="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl pl-12 pr-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-200"
+                                       placeholder="Email or username"
                                        required>
                             </div>
                             
-                            <div>
-                                <label class="block text-slate-300 text-sm font-medium mb-2">Password</label>
-                                <div class="relative">
-                                    <input ng-type="$ctrl.showPassword ? 'text' : 'password'" 
-                                           ng-model="$ctrl.credentials.password"
-                                           class="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-200"
-                                           placeholder="Enter your password"
-                                           required>
-                                    <button type="button" 
-                                            ng-click="$ctrl.togglePassword()"
-                                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-white transition-colors">
-                                        <i class="fas" ng-class="$ctrl.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-                                    </button>
-                                </div>
+                            <!-- Password -->
+                            <div class="relative">
+                                <i class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                                <input ng-type="$ctrl.showPassword ? 'text' : 'password'" 
+                                       ng-model="$ctrl.credentials.password"
+                                       class="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl pl-12 pr-12 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-200"
+                                       placeholder="Password"
+                                       required>
+                                <button type="button" 
+                                        ng-click="$ctrl.togglePassword()"
+                                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-white transition-colors">
+                                    <i class="fas" ng-class="$ctrl.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                                </button>
                             </div>
                             
-                            <div class="flex items-center justify-between">
+                            <!-- Options Row -->
+                            <div class="flex items-center justify-between text-sm">
                                 <label class="flex items-center text-slate-400 cursor-pointer">
-                                    <input type="checkbox" 
-                                           ng-model="$ctrl.rememberMe"
-                                           class="mr-2 w-4 h-4 rounded bg-slate-800 border-slate-600 text-violet-500 focus:ring-violet-500">
-                                    <span class="text-sm">Remember me</span>
+                                    <input type="checkbox" ng-model="$ctrl.rememberMe" class="mr-2 w-4 h-4 rounded bg-slate-800 border-slate-600 text-violet-500">
+                                    Remember me
                                 </label>
-                                <a href="#" class="text-violet-400 hover:text-violet-300 text-sm transition-colors underline">
-                                    Forgot password?
-                                </a>
+                                <a href="#" class="text-violet-400 hover:text-violet-300 transition-colors">Forgot password?</a>
                             </div>
                             
+                            <!-- Sign In Button -->
                             <button type="submit" 
                                     ng-disabled="$ctrl.isLoading"
-                                    class="w-full bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-violet-500/25 disabled:opacity-50 disabled:cursor-not-allowed">
-                                <span ng-if="!$ctrl.isLoading">
-                                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
-                                </span>
+                                    class="w-full bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-violet-500/25 disabled:opacity-50">
+                                <span ng-if="!$ctrl.isLoading">Sign In</span>
                                 <span ng-if="$ctrl.isLoading" class="flex items-center justify-center">
                                     <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
                                     Signing in...
                                 </span>
                             </button>
                         </form>
-                    
-                        <div class="mt-6">
-                            <div class="relative">
-                                <div class="absolute inset-0 flex items-center">
-                                    <div class="w-full border-t border-slate-700/50"></div>
-                                </div>
-                                <div class="relative flex justify-center text-sm">
-                                    <span class="px-3 bg-slate-900/80 text-slate-400">Or continue with</span>
-                                </div>
+                        
+                        <!-- Divider -->
+                        <div class="relative my-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-slate-700/50"></div>
                             </div>
-                            
-                            <div class="mt-6 grid grid-cols-2 gap-3">
-                                <button class="flex items-center justify-center px-4 py-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 hover:border-slate-500 rounded-xl transition-all duration-200">
-                                    <i class="fab fa-google text-red-400 mr-2"></i>
-                                    <span class="text-white font-medium">Google</span>
-                                </button>
-                                <button class="flex items-center justify-center px-4 py-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 hover:border-slate-500 rounded-xl transition-all duration-200">
-                                    <i class="fab fa-github text-white mr-2"></i>
-                                    <span class="text-white font-medium">GitHub</span>
-                                </button>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-3 bg-slate-900/80 text-slate-400">Or</span>
                             </div>
                         </div>
                         
-                        <div class="mt-8 text-center">
-                            <span class="text-slate-400">Don't have an account? </span>
-                            <a href="#!/register" class="text-violet-400 hover:text-violet-300 font-medium transition-colors underline">
-                                Sign up
-                            </a>
+                        <!-- Social Login -->
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <button class="flex items-center justify-center py-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 rounded-xl transition-all duration-200">
+                                <i class="fab fa-google text-red-400 mr-2"></i>
+                                <span class="text-white font-medium">Google</span>
+                            </button>
+                            <button class="flex items-center justify-center py-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 rounded-xl transition-all duration-200">
+                                <i class="fab fa-github text-white mr-2"></i>
+                                <span class="text-white font-medium">GitHub</span>
+                            </button>
                         </div>
-                </div>
-                
+                        
+                        <!-- Sign Up Link -->
+                        <div class="text-center">
+                            <span class="text-slate-400">New to FlowChat? </span>
+                            <a href="#!/register" class="text-violet-400 hover:text-violet-300 font-medium transition-colors">Create account</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="mt-8 text-center">
+                        <div class="flex items-center justify-center space-x-8 text-sm">
+                            <div class="flex items-center text-slate-400">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                <span><strong class="text-white">50K+</strong> users</span>
+                            </div>
+                            <div class="flex items-center text-slate-400">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+                                <span><strong class="text-white">99.9%</strong> uptime</span>
+                            </div>
+                            <div class="flex items-center text-slate-400">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></div>
+                                <span><strong class="text-white">2M+</strong> messages</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
