@@ -1,0 +1,21 @@
+{
+  "name": "@flowchat/shared",
+  "version": "1.0.0",
+  "description": "Shared utilities and database schema for FlowChat microservices",
+  "main": "index.js",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "prisma": "^5.7.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}
